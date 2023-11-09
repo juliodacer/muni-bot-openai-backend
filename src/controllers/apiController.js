@@ -9,7 +9,14 @@ async function TransformData(req, res) {
     res.send()
 }
 
+async function UploadFile(req, res) {
+    const response = await fileService.UploadFile()
+    res.send(response)
+}
+
+
 module.exports = {
     Test,
-    TransformData
+    TransformData,
+    UploadFile
 }
