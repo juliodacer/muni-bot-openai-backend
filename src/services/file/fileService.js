@@ -1,7 +1,6 @@
 const xlxs = require("xlsx")
 const fs = require("fs")
 const OpenAI = require("openai")
-const { throws } = require("assert")
 const openai = new OpenAI({ apiKey: "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" })
 // apiKey: process.env.OPENAI_API_KEY,
 
