@@ -14,6 +14,16 @@ async function CreateFineTune(fileId) {
     }
 }
 
+async function ListFineTune() {
+    try {
+        const response = await openai.fineTunes.list()
+        return response
+    } catch (error) {
+        throw Error({ status: 400, data: error })
+    }
+}
+
 module.exports = {
-    CreateFineTune
+    CreateFineTune,
+    ListFineTune
 }

@@ -53,6 +53,10 @@ async function CreateFineTune(req, res) {
     res.send(response)
 }
 
+async function ListFineTune(req, res) {
+    const response = await fineTuneService.ListFineTune()
+    res.send(response)
+}
 //#endregion
 
 module.exports = {
@@ -62,5 +66,6 @@ module.exports = {
     ListFiles,
     RetrieveFile,
     DeleteFile,
-    CreateFineTune
+    CreateFineTune,
+    ListFineTune
 }

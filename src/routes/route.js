@@ -10,5 +10,6 @@ router
     .get('/retrieve-file', apiController.RetrieveFile)
     .delete('/delete-file', apiController.DeleteFile)
     .post('/create-fine-tune', apiController.CreateFineTune)
+    .get('/list-fine-tune', apiController.ListFineTune)
 
 module.exports = router;
