@@ -23,7 +23,18 @@ async function ListFineTune() {
     }
 }
 
+
+async function RetrieveFineTune(fineTubeId) {
+    try {
+        const response = await openai.fineTunes.retrieve(fineTubeId)
+        return response
+    } catch (error) {
+        throw Error(error.error.message)
+    }
+}
+
 module.exports = {
     CreateFineTune,
-    ListFineTune
+    ListFineTune,
+    RetrieveFineTune
 }

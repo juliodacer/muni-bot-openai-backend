@@ -57,6 +57,18 @@ async function ListFineTune(req, res) {
     const response = await fineTuneService.ListFineTune()
     res.send(response)
 }
+
+async function RetrieveFineTune(req, res) {
+    const fineTuneId = req.query["fineTuneId"]
+    try {
+        const response = await fineTuneService.RetrieveFineTune(fineTuneId)
+        res.send(response)
+    } catch (error) {
+        console.log(error.message)
+        res.status(404).send(error.message)
+    }
+}
+
 //#endregion
 
 module.exports = {
@@ -67,5 +79,6 @@ module.exports = {
     RetrieveFile,
     DeleteFile,
     CreateFineTune,
-    ListFineTune
+    ListFineTune,
+    RetrieveFineTune
 }
