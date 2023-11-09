@@ -1,6 +1,7 @@
 const xlxs = require("xlsx")
 const fs = require("fs")
 const OpenAI = require("openai")
+const { throws } = require("assert")
 const openai = new OpenAI({ apiKey: "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" })
 // apiKey: process.env.OPENAI_API_KEY,
 
@@ -29,8 +30,30 @@ async function ListFiles() {
     return response.body
 }
 
+async function RetrieveFile(fileId) {
+    try {
+        const response = await openai.files.retrieve(fileId)
+        return response
+    } catch (error) {
+        throw new Error("fileId not found")
+    }
+}
+
+async function DeleteFile(fileId) {
+    try {
+        const response = await openai.files.del(fileId)
+        console.log('RESP', response)
+        return response
+    } catch (error) {
+        console.log('ERROR_DELETE', error.error.message)
+        throw new Error("fileId not found")
+    }
+}
+
 module.exports = {
     TransformData,
     UploadFile,
-    ListFiles
+    ListFiles,
+    RetrieveFile,
+    DeleteFile
 }
