@@ -13,10 +13,15 @@ async function UploadFile(req, res) {
     const response = await fileService.UploadFile()
     res.send(response)
 }
+async function ListFiles(req, res) {
+    const response = await fileService.ListFiles()
+    res.send(response)
+}
 
 
 module.exports = {
     Test,
     TransformData,
-    UploadFile
+    UploadFile,
+    ListFiles
 }
