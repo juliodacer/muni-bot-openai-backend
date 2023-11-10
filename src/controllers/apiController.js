@@ -21,7 +21,6 @@ async function ListFiles(req, res) {
     res.send(response)
 }
 
-
 async function RetrieveFile(req, res) {
     const fileId = req.query["fileId"]
     try {
@@ -49,19 +48,52 @@ async function DeleteFile(req, res) {
 //#region FineTune
 async function CreateFineTune(req, res) {
     const fileId = req.query["fileId"]
-    const response = await fineTuneService.CreateFineTune(fileId)
-    res.send(response)
+    try {
+        const response = await fineTuneService.CreateFineTune(fileId)
+        res.send(response)
+    } catch (error) {
+        console.log(error.message)
+        res.status(404).send(error.message)
+    }
 }
 
 async function ListFineTune(req, res) {
-    const response = await fineTuneService.ListFineTune()
-    res.send(response)
+    try {
+        const response = await fineTuneService.ListFineTune()
+        res.send(response)
+    } catch (error) {
+        console.log(error.message)
+        res.status(404).send(error.message)
+    }
 }
 
 async function RetrieveFineTune(req, res) {
     const fineTuneId = req.query["fineTuneId"]
     try {
         const response = await fineTuneService.RetrieveFineTune(fineTuneId)
+        res.send(response)
+    } catch (error) {
+        console.log(error.message)
+        res.status(404).send(error.message)
+    }
+}
+
+async function CancelFineTune(req, res) {
+    const fineTuneId = req.query["fineTuneId"]
+    try {
+        const response = await fineTuneService.CancelFineTune(fineTuneId)
+        res.send(response)
+    } catch (error) {
+        console.log(error.message)
+        res.status(404).send(error.message)
+    }
+}
+
+async function DeleteModelFineTune(req, res) {
+    const model = req.query["model"]
+    console.log('model', model)
+    try {
+        const response = await fineTuneService.DeleteModelFineTune(model)
         res.send(response)
     } catch (error) {
         console.log(error.message)
@@ -80,5 +112,7 @@ module.exports = {
     DeleteFile,
     CreateFineTune,
     ListFineTune,
-    RetrieveFineTune
+    RetrieveFineTune,
+    CancelFineTune,
+    DeleteModelFineTune
 }

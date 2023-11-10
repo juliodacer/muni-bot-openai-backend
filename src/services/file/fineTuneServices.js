@@ -10,7 +10,7 @@ async function CreateFineTune(fileId) {
         })
         return response
     } catch (error) {
-        throw Error({ status: 400, data: error })
+        throw Error(error.error.message)
     }
 }
 
@@ -19,10 +19,9 @@ async function ListFineTune() {
         const response = await openai.fineTunes.list()
         return response
     } catch (error) {
-        throw Error({ status: 400, data: error })
+        throw Error(error.error.message)
     }
 }
-
 
 async function RetrieveFineTune(fineTubeId) {
     try {
@@ -33,8 +32,30 @@ async function RetrieveFineTune(fineTubeId) {
     }
 }
 
+async function CancelFineTune(fineTubeId) {
+    try {
+        const response = await openai.fineTunes.cancel(fineTubeId)
+        return response
+    } catch (error) {
+        console.log('ERR', error.message)
+        throw Error(error.error.message)
+    }
+}
+
+async function DeleteModelFineTune(model) {
+    try {
+        const response = await openai.models.delete(model)
+        return response
+    } catch (error) {
+        console.log(error.message)
+        throw Error(error.error.message)
+    }
+}
+
 module.exports = {
     CreateFineTune,
     ListFineTune,
-    RetrieveFineTune
+    RetrieveFineTune,
+    CancelFineTune,
+    DeleteModelFineTune
 }

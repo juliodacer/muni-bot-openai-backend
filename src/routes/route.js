@@ -12,5 +12,7 @@ router
     .post('/create-fine-tune', apiController.CreateFineTune)
     .get('/list-fine-tune', apiController.ListFineTune)
     .get('/retrieve-fine-tune', apiController.RetrieveFineTune)
+    .get('/cancel-fine-tune', apiController.CancelFineTune)
+    .delete('/delete-model-fine-tune', apiController.DeleteModelFineTune)
 
 module.exports = router;
