@@ -1,8 +1,7 @@
 const xlxs = require("xlsx")
 const fs = require("fs")
 const OpenAI = require("openai")
-const openai = new OpenAI({ apiKey: "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" })
-// apiKey: process.env.OPENAI_API_KEY,
+const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY })
 
 async function TransformData() {
     let workbook = xlxs.readFile("src/shared/data-set.xlsx")

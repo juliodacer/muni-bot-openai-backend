@@ -1,5 +1,5 @@
 const OpenAI = require("openai")
-const openai = new OpenAI({ apiKey: "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" })
+const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY })
 
 async function CreateFineTune(fileId) {
     try {

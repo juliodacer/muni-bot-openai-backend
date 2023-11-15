@@ -1,5 +1,5 @@
 const OpenAI = require("openai")
-const openai = new OpenAI({ apiKey: "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" })
+const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY })
 
 async function GetMessage(message) {
     try {
@@ -9,7 +9,7 @@ async function GetMessage(message) {
             // model: "davinci:ft-personal:muni-chatbot-2023-11-09-07-18-59",
             prompt: message,
             max_tokens: 150,
-            // temperature: 0.9,
+            temperature: 0.8,
             // topP: 1,
             // stop: ["END"],
             // n: 2,
@@ -19,7 +19,7 @@ async function GetMessage(message) {
             return response.choices[0]?.text
 
     } catch (error) {
-        console.log('ERRORCITO', error)
+        console.log('ERROR_GetMessage', error)
         throw Error("Lo siento, ocurrio un problema, intentalo mas tarde")
     }
 }
