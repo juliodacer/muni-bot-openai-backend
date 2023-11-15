@@ -13,6 +13,7 @@ router
     .get('/list-fine-tune', apiController.ListFineTune)
     .get('/retrieve-fine-tune', apiController.RetrieveFineTune)
     .get('/cancel-fine-tune', apiController.CancelFineTune)
-    .delete('/delete-model-fine-tune', apiController.DeleteModelFineTune)
+    .delete('/delete-model-fine-tune', apiController.DeleteModelFineTune) // observar
+    .get('/get-message', apiController.GetMessage)
 
 module.exports = router;

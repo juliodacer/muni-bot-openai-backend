@@ -1,5 +1,6 @@
 const fileService = require("../services/file/fileService")
 const fineTuneService = require("../services/file/fineTuneServices")
+const openAIService = require("../services/file/openAIService")
 
 async function Test(req, res) {
     res.send("test ok")
@@ -103,6 +104,18 @@ async function DeleteModelFineTune(req, res) {
 
 //#endregion
 
+async function GetMessage(req, res) {
+    const message = req.query["message"]
+    try {
+        const response = await openAIService.GetMessage(message)
+        console.log('responseGetMessage', response)
+        res.send(response)
+    } catch (error) {
+        console.log(error.message)
+        res.status(404).send(error.message)
+    }
+}
+
 module.exports = {
     Test,
     TransformData,
@@ -114,5 +127,6 @@ module.exports = {
     ListFineTune,
     RetrieveFineTune,
     CancelFineTune,
-    DeleteModelFineTune
+    DeleteModelFineTune,
+    GetMessage
 }
