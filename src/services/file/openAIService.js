@@ -4,15 +4,15 @@ const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY })
 async function GetMessage(message) {
     try {
         const response = await openai.completions.create({
-            model: "davinci:ft-personal:muni-chatbot-2023-11-09-07-18-59",
+            model: "davinci:ft-personal:munibot-upeu-2023-11-21-10-34-55",
             // messages: [{ "role": "user", "content": message }],
             // model: "davinci:ft-personal:muni-chatbot-2023-11-09-07-18-59",
             prompt: message,
-            max_tokens: 150,
-            temperature: 0.8,
-            // topP: 1,
-            // stop: ["END"],
-            // n: 2,
+            max_tokens: 100,
+            temperature: 0.3,
+            // top_p: 1,
+            stop: ["END"],
+            // n: 1,
         })
 
         if (response?.choices?.length > 0)

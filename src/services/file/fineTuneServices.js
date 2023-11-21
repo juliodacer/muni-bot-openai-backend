@@ -6,7 +6,7 @@ async function CreateFineTune(fileId) {
         const response = await openai.fineTunes.create({
             training_file: fileId,
             model: "davinci",
-            suffix: "muni-chatbot",
+            suffix: "munibot-upeu",
         })
         return response
     } catch (error) {
